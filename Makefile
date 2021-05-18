@@ -128,7 +128,7 @@ COMPILERFLAGS-TSAN = $(COMPILERFLAGS) -fsanitize=thread
 
 .PHONY: all clean
 
-all: $(target) # $(target-tsan)
+all: $(target) $(target-tsan)
 
 o_files = $(patsubst %.$(extension),%.o,$(fuentes))
 o-tsan_files = $(patsubst %.$(extension),%.o-tsan,$(fuentes))
@@ -164,7 +164,7 @@ clean: clean-obj
 	$(RM) -f $(target) $(target-tsan)
 
 test: all
-	./test.sh
+	bash ./test.sh
 
 check: 
 	cppcheck --enable=all *.cpp *.h

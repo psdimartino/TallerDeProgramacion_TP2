@@ -3,12 +3,6 @@
 
 #include <string>
 
-#define RED "\033[0;31m"
-#define BLUE "\033[0;34m"
-#define NC "\033[0m"
-#define GREEN "\033[0;32m"
-#define CYAN "\033[0;36m"
-
 enum status { READY, EXPLORED, DEAD };
 
 class URL {

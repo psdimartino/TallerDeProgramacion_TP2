@@ -15,15 +15,12 @@ std::ostream& operator<<(std::ostream &os, const URL &url) {
     os << url.url << " -> ";
     switch (url.stat) {
         case READY:
-            // os << GREEN << "ready" << NC;
             os << "ready";
             break;
         case EXPLORED:
-            // os << BLUE << "explored" << NC;
             os << "explored";
             break;
         case DEAD:
-            // os << RED << "dead" << NC;
             os << "dead";
     }
     return os;
@@ -53,23 +50,16 @@ bool operator<(const URL& a, const URL& b) {
 }
 
 URL::URL(URL&& other) {
-    std::cerr << "copy constructor" << std::endl;
     this->url = other.url;
     this->offset = other.offset;
     this->length = other.length;
     this->stat = other.stat;
-    // other.url = nullptr;
-    // other.offset = other.length = 0;
-    std::cerr << "copy constructor end" << std::endl;
 }
 
 URL& URL::operator=(URL&& other) {
-    std::cerr << "operator=" << std::endl;
     this->url = other.url;
     this->offset = other.offset;
     this->length = other.length;
     this->stat = other.stat;
-    // other.url = nullptr;
-    // other.offset = other.length = 0;
     return *this;
 }

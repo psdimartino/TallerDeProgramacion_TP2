@@ -9,24 +9,24 @@
 #include <algorithm>
 
 #include "url.h"
+#include "Thread.h"
+#include "SafeQueue.h"
 
-class Fetcher {
+class Fetcher : public Thread {
  private:
     std::map<std::string, URL> &index;
-    std::queue<std::string> &targets;
+    SafeQueue &targets;
     std::vector<URL> &result;
     std::ifstream &fpages;
     std::string allowed;
  public:
     explicit Fetcher(   std::map<std::string, URL> &index,
-                        std::queue<std::string> &targets,
+                        SafeQueue &targets,
                         std::vector<URL> &result,
                         std::ifstream &fpages,
-                        std::string allowed);
-    void run();
+                        const std::string allowed);
+    virtual void run() override;
     
 };
-
-
 
 #endif  // FETCHER_H_
