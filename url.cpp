@@ -1,16 +1,17 @@
 #include <regex>
+#include <iostream>
 
 #include "url.h"
 
-URL::URL(std::string url, unsigned int offs, unsigned int l) :
+URL::URL(const std::string &url, const unsigned int &offs, const unsigned int &l) :
     url(url), offset(offs), length(l)
 {}
 
-bool URL::isUrl(std::string url) {
+bool URL::isURL(const std::string &url) {
     return std::regex_match(url, std::regex("http://.*"));
 }
 
-std::ostream& operator<<(std::ostream& os, const URL& url) {
+std::ostream& operator<<(std::ostream &os, const URL &url) {
     os << url.url << " -> ";
     switch (url.stat) {
         case READY:
@@ -28,7 +29,7 @@ std::ostream& operator<<(std::ostream& os, const URL& url) {
     return os;
 }
 
-bool URL::isSubdomainOf(std::string url, std::string domain) {
+bool URL::isSubdomainOf(const std::string &url, const std::string &domain) {
     return std::regex_match(url, std::regex("(^|^[^:]+:\\/\\/|[^\\.]+\\.)" + domain + ".*"));
 }
 
@@ -49,4 +50,26 @@ void URL::setExplored() {
 
 bool operator<(const URL& a, const URL& b) {
     return a.url < b.url;
+}
+
+URL::URL(URL&& other) {
+    std::cerr << "copy constructor" << std::endl;
+    this->url = other.url;
+    this->offset = other.offset;
+    this->length = other.length;
+    this->stat = other.stat;
+    // other.url = nullptr;
+    // other.offset = other.length = 0;
+    std::cerr << "copy constructor end" << std::endl;
+}
+
+URL& URL::operator=(URL&& other) {
+    std::cerr << "operator=" << std::endl;
+    this->url = other.url;
+    this->offset = other.offset;
+    this->length = other.length;
+    this->stat = other.stat;
+    // other.url = nullptr;
+    // other.offset = other.length = 0;
+    return *this;
 }
