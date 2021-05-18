@@ -19,13 +19,13 @@ class Fetcher : public Thread {
     SafeQueue &targets;
     std::vector<URL> &result;
     std::ifstream &fpages;
-    std::string allowed;
+    const std::string &allowed;
  public:
     explicit Fetcher(std::map<std::string, URL> &index,
                         SafeQueue &targets,
                         std::vector<URL> &result,
                         std::ifstream &fpages,
-                        const std::string allowed);
+                        const std::string &allowed);
     virtual void run() override;
 };
 

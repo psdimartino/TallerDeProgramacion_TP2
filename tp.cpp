@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 
     std::ifstream ftargets(argv[1]);
     if (!ftargets.is_open()) {
-        std::cout << "Se abrió mal el archivo targets " << std::endl;
+        std::cout << "Se abrió mal el archivo targets" << std::endl;
         return 1;
     }
 

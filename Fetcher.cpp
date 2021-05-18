@@ -2,11 +2,11 @@
 #include <utility>
 #include "Fetcher.h"
 
-Fetcher::Fetcher(   std::map<std::string, URL> &index,
+Fetcher::Fetcher(std::map<std::string, URL> &index,
                     SafeQueue &targets,
                     std::vector<URL> &result,
                     std::ifstream &fpages,
-                    const std::string allowed) :
+                    const std::string &allowed) :
     index(index),
     targets(targets),
     result(result),
@@ -35,4 +35,3 @@ void Fetcher::run() {
         result.push_back(std::move(url));
     }
 }
-
