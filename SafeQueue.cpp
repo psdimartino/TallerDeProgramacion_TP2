@@ -1,3 +1,6 @@
+#include <string>
+#include <utility>
+
 #include "SafeQueue.h"
 
 SafeQueue::SafeQueue(){}

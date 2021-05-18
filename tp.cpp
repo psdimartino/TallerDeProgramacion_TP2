@@ -10,7 +10,7 @@
 #include "Fetcher.h"
 #include "SafeQueue.h"
 
-int main (int argc, char *argv[]) {
+int main(int argc, char *argv[]) {
     std::map<std::string, URL> index;
     SafeQueue targets;
     std::string str;
@@ -19,7 +19,7 @@ int main (int argc, char *argv[]) {
 
     std::ifstream ftargets(argv[1]);
     if (!ftargets.is_open()) {
-        std::cout << "Se abrió mal el archivo targets: " << argv[1] << std::endl;
+        std::cout << "Se abrió mal el archivo targets " << std::endl;
         return 1;
     }
 

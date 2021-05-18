@@ -1,11 +1,12 @@
 #include <thread>
+#include <utility>
 
 class Thread {
     private:
         std::thread thread;
  
     public:
-        Thread () {}
+        Thread() {}
 
         void start() {
             thread = std::thread(&Thread::run,  this);
@@ -30,5 +31,4 @@ class Thread {
             this->thread = std::move(other.thread);
             return *this;
         }
-
 };

@@ -12,10 +12,12 @@ class URL {
     unsigned int length;
     status stat = READY;
  public:
-    explicit URL(const std::string &url, const unsigned int &offset, const unsigned int &length);
+    explicit URL(const std::string &url, const unsigned int &offset,
+                                          const unsigned int &length);
     URL(URL&& other);
     static bool isURL(const std::string &url);
-    static bool isSubdomainOf(const std::string &url, const std::string &domain);
+    static bool isSubdomainOf(const std::string &url,
+                                 const std::string &domain);
     friend std::ostream& operator<<(std::ostream &os, const URL &other);
     void setDead();
     void setExplored();

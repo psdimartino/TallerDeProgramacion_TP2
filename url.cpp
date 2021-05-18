@@ -3,7 +3,8 @@
 
 #include "url.h"
 
-URL::URL(const std::string &url, const unsigned int &offs, const unsigned int &l) :
+URL::URL(const std::string &url, const unsigned int &offs,
+                                    const unsigned int &l) :
     url(url), offset(offs), length(l)
 {}
 
@@ -27,7 +28,8 @@ std::ostream& operator<<(std::ostream &os, const URL &url) {
 }
 
 bool URL::isSubdomainOf(const std::string &url, const std::string &domain) {
-    return std::regex_match(url, std::regex("(^|^[^:]+:\\/\\/|[^\\.]+\\.)" + domain + ".*"));
+    return std::regex_match(url,
+            std::regex("(^|^[^:]+:\\/\\/|[^\\.]+\\.)" + domain + ".*"));
 }
 
 unsigned int URL::getOffset() {

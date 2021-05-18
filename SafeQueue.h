@@ -1,6 +1,6 @@
 #ifndef SAFEQUEUE_H_
 #define SAFEQUEUE_H_
-
+#include <string>
 #include <queue>
 #include <mutex>
 
