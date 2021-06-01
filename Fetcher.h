@@ -3,30 +3,25 @@
 
 #include <iostream>
 #include <map>
-#include <vector>
-#include <queue>
-#include <fstream>
-#include <algorithm>
+#include <mutex>
+#include <condition_variable>
 #include <string>
 
 #include "url.h"
-#include "Thread.h"
-#include "SafeQueue.h"
 
-class Fetcher : public Thread {
+class Fetcher {
  private:
-    std::map<std::string, URL> &index;
-    SafeQueue &targets;
-    std::vector<URL> &result;
-    std::ifstream &fpages;
-    const std::string &allowed;
+    std::map<std::string, URL> index;
+    std::mutex m;
+    std::condition_variable cv;
  public:
-    explicit Fetcher(std::map<std::string, URL> &index,
-                        SafeQueue &targets,
-                        std::vector<URL> &result,
-                        std::ifstream &fpages,
-                        const std::string &allowed);
-    virtual void run() override;
+    explicit Fetcher(const char *filename);
+    friend std::ostream& operator<<(std::ostream &os, const Fetcher &other);
+    URL& fetch(std::string url);
+
+    Fetcher& operator=(const Fetcher&) = delete;
+    Fetcher& operator=(Fetcher&& other);
+    Fetcher(Fetcher&& other);
 };
 
 #endif  // FETCHER_H_
