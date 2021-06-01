@@ -21,6 +21,8 @@ Para la resolución del problema planteado se decidió orientar la estructura de
 
 La clase principal `MultithreadedCrawler` contiene a los recursos compartidos y es la responsable de iniciar los threads y finalizarlos luego del tiempo establecido.
 
+La relacion entre las clases se puede observar en el siguiente diagrama:
+
 ![Diagrama principal de las relaciones entre clases](./Diagram_1.PNG)
 
 ### Threads
