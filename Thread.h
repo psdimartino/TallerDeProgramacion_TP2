@@ -18,7 +18,6 @@ class Thread {
         Thread& operator=(const Thread&) = delete;
         Thread(Thread&& other);
         Thread& operator=(Thread&& other);
-
 };
 
 #endif  // THREAD_H_
